@@ -1,5 +1,6 @@
 import swc from '@rollup/plugin-swc'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import dts from 'rollup-plugin-dts'
 
 export default {
     input: 'src/index.ts',
@@ -19,7 +20,11 @@ export default {
             file: 'dist/index.esm.js',
             format: 'esm',
             sourcemap: true
-        }
+        },
+        {
+            file: 'dist/elparser.d.ts',
+            format: 'es',
+        },
     ],
     plugins: [
         nodeResolve({
@@ -33,6 +38,7 @@ export default {
                     tsx: false
                 }
             }
-        })
+        }),
+        dts(),
     ]
 }
