@@ -15,7 +15,7 @@
         "prebuild": "npm run clean",
         "build": "tsc && rollup -c",
         "pretest": "npm run build",
-        "prepulishOnly": "npm run build",
+        "prepulishOnly": "npm run test",
         "test": "jest"
     },
     "keywords": [],

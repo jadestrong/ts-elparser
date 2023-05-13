@@ -5,7 +5,6 @@
         "target": "es2020",
         "lib": ["es2021", "dom"],
         "sourceMap": true,
-        "outDir": "dist",
         "moduleResolution": "node",
         "esModuleInterop": true,
         "declaration": true,
