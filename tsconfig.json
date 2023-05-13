@@ -2,12 +2,15 @@
     "compilerOptions": {
         "declaration": true,
         "module": "esnext",
-        "target": "es5",
+        "target": "es2020",
         "lib": ["es2021", "dom"],
         "sourceMap": true,
         "outDir": "dist",
         "moduleResolution": "node",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "declaration": true,
+        "sourceMap": true,
+        "outDir": ".build"
     },
     "include": ["src/**/*"],
     "exclude": ["node_modules", "dist"]

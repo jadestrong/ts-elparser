@@ -1,35 +1,20 @@
 import swc from '@rollup/plugin-swc'
 import nodeResolve from '@rollup/plugin-node-resolve'
+import json from '@rollup/plugin-json'
 import dts from 'rollup-plugin-dts'
+import pkg from './package.json' assert { type: 'json' }
 
-export default {
-    input: 'src/index.ts',
+export default [{
+    input: '.build/index.js',
     output: [
-        {
-            file: 'dist/index.js',
-            format: 'cjs',
-            sourcemap: true
-        },
-        {
-            file: 'dist/index.min.js',
-            format: 'cjs',
-            sourcemap: true,
-            plugins: [],
-        },
-        {
-            file: 'dist/index.esm.js',
-            format: 'esm',
-            sourcemap: true
-        },
-        {
-            file: 'dist/elparser.d.ts',
-            format: 'es',
-        },
+        { file: pkg.exports.import, format: 'es' },
+        { file: pkg.exports.require, format: 'commonjs' },
     ],
     plugins: [
         nodeResolve({
-            extensions: [".ts"],
+            extensions: [".ts", ".js", ".json"],
         }),
+        json(),
         swc({
             include: ['src/**/*.ts'],
             jsc: {
@@ -39,6 +24,10 @@ export default {
                 }
             }
         }),
-        dts(),
+        // dts(),
     ]
-}
+}, {
+    input: './.build/index.d.ts',
+    output: [{ file: pkg.types, format: 'es' }],
+    plugins: [dts()]
+}]
