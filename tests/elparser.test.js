@@ -1,4 +1,4 @@
-const pc = require('../dist/index')
+const pc = require('../dist/ts-elparser.cjs')
 
 const assert = {
   equal: (a, b) => {

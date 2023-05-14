@@ -53,7 +53,7 @@ Symbol = (!"." start:SymbolStart parts:SymbolPart* {
 
 SymbolStart = [a-z\-.\/_:*+=]i
 
-SymbolPart = [a-z\-.\/_:*+=0-9]i
+SymbolPart = [a-z\-.\/_:*+?=0-9]i
 
 DecimalLiteral
   = parts:$(DecimalSign? DecimalIntegerLiteral "." DecimalDigits? ExponentPart?) { return ast.SExpNumber.floatVal(parts); }
